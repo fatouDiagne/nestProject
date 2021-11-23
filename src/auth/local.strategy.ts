@@ -8,10 +8,10 @@ export class LocalStrategy extends PassportStrategy(Strategy){
     //Strategie d'authentification local Passport avec 
     //lit en premier ce fonction
     constructor(private authService: AuthService){
-        super();
+        super({});
     }
     //chercher user dans authservice
-    //gérer par passport
+    //gérer par passport fait la verification de l'utilisateur
     async validate(username: string, password: string):  Promise<any> {
         const user = await this.authService.validateUser(username, password);
         if(!user) {

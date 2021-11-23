@@ -1,9 +1,10 @@
 import { Controller,Request, Get, Post, UseGuards } from '@nestjs/common';
 //import { JwtService } from '@nestjs/jwt';
 import { AppService } from './app.service';
-import { AuthenticatedGuard } from './auth/authenticated.guard';
+//import { AuthenticatedGuard } from './auth/authenticated.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService }  from './auth/auth.service';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 
 @Controller()
@@ -23,7 +24,7 @@ export class AppController {
 
 
 // GET /protectedGua
-//@UseGuards(AuthenticatedGuard)
+@UseGuards(JwtAuthGuard)
   @Get('protected')
   /*getHello(): string {
     return this.appService.getHello();
